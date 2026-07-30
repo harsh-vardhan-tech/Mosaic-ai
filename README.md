@@ -1,59 +1,225 @@
-# Mosaic — AI-Powered Digital Identity System
+# Mosaic AI
 
-Students collect certificates, project reports, resumes, and internship
-letters across a dozen different folders and never look at them again.
-Mosaic ingests all of it, uses AI to pull out the structured story
-(skills, dates, organizations), and turns it into one living portfolio you
-can search, chat with, and generate a resume or bio from.
+> An AI-powered Digital Identity System that automatically understands, organizes, and connects a student's academic and professional journey.
 
-## What's built
+---
 
-**Backend (FastAPI)** — done:
-- Upload + AI categorization into 6 categories (Projects, Skills,
-  Certifications, Internships, Achievements, Academics)
-- Relationship engine (links items that share extracted skills)
-- Timeline (chronological view)
-- Semantic search (ChromaDB) + RAG chat over your own documents
-- AI bio / resume / portfolio generators
-- Analytics summary
-- Firebase Auth on every route, per-user data isolation
-- File storage on Cloudinary (Firebase Storage needs a paid plan), with
-  permanent delivery URLs saved on the Firestore document
-- Gemini → Gemini backup → Groq fallback chain
+## Problem Statement
 
-**Frontend (Next.js)** — done:
-- Firebase email/password login & signup, plus Google and Microsoft social sign-in
-- Dashboard: drag-and-drop upload, mosaic grid with category filters
-- Item detail view with a relationship graph (shared-skill connections)
-- Timeline, Search, Chat, Generate (bio/resume/portfolio), Analytics pages
-- Settings: display name, password change (with re-auth), theme switcher, sign out
-- Dark mode, responsive layout with a mobile nav drawer
+Throughout their academic and professional journey, students collect certificates, resumes, internship letters, project reports, achievements, and other important documents.
 
-## Project structure
+Over time these files become scattered across folders, cloud storage, emails, and multiple devices. Finding a specific document or understanding how different experiences are connected becomes difficult.
+
+Traditional storage systems can store files, but they cannot understand a person's journey.
+
+---
+
+## Solution
+
+Mosaic AI transforms scattered documents into an intelligent digital identity.
+
+The system uses AI to extract structured information, automatically categorizes documents, identifies relationships between experiences, builds a digital timeline, and enables natural language search over the user's own data.
+
+Original files remain preserved while AI creates a searchable knowledge layer on top of them.
+
+---
+
+# Key Features
+
+### AI Document Ingestion
+- Upload certificates, resumes, internship letters, project reports and academic documents.
+- Automatic text extraction and metadata generation using Gemini AI.
+
+### Intelligent Categorization
+Documents are automatically organized into:
+- Projects
+- Skills
+- Certifications
+- Internships
+- Achievements
+- Academics
+
+### Relationship Engine
+Automatically discovers relationships between uploaded information.
+
+Example:
+
+```
+Certification
+      ↓
+Skill
+      ↓
+Project
+      ↓
+Internship
+```
+
+### Digital Journey Timeline
+Creates a chronological timeline of the user's academic and professional growth.
+
+Example:
+
+```
+2023 → Python Certification
+
+2024 → Web Development Project
+
+2025 → Software Internship
+
+2026 → AI Portfolio
+```
+
+### Semantic Search
+Search documents using natural language instead of manually browsing folders.
+
+Examples:
+
+- Show all my certificates
+- Show my AI projects
+- Show internship documents
+- Show my latest resume
+
+### AI Chat (RAG)
+Chat with uploaded documents using Retrieval-Augmented Generation (RAG).
+
+### AI Content Generation
+Generate:
+- Resume
+- Professional Bio
+- Portfolio Summary
+
+### Analytics Dashboard
+View categorized information and overall profile summary.
+
+---
+
+# AI Workflow
+
+```
+User Upload
+      │
+      ▼
+Document Extraction
+      │
+      ▼
+Gemini AI
+      │
+      ▼
+Structured Metadata
+      │
+      ▼
+Automatic Categorization
+      │
+      ▼
+Relationship Engine
+      │
+      ▼
+Vector Embeddings
+      │
+      ▼
+Semantic Search + RAG Chat
+      │
+      ▼
+Timeline • Analytics • Resume Generation
+```
+
+---
+
+# Technology Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | Next.js, React, Tailwind CSS |
+| Backend | FastAPI |
+| Authentication | Firebase Authentication |
+| Database | Cloud Firestore |
+| AI Models | Gemini AI, Groq (Fallback) |
+| Vector Database | ChromaDB |
+| File Storage | Cloudinary |
+| Deployment | Vercel, Render |
+
+---
+
+# Project Structure
 
 ```
 mosaic-ai/
-├── backend/        FastAPI app — see docs/INSTALL.md to run it locally
-├── frontend/        Next.js app — see docs/INSTALL.md to run it locally
-└── docs/
-    ├── INSTALL.md    local setup for both apps
-    ├── DEPLOY.md      Vercel (frontend) + Render (backend)
-    └── ENV_VARS.md    every environment variable, what it's for
+
+├── app/
+├── backend/
+├── components/
+├── docs/
+├── public/
+├── lib/
+└── README.md
 ```
 
-## Quick start
+---
 
-1. Read [`docs/INSTALL.md`](docs/INSTALL.md) — get both apps running locally.
-2. Read [`docs/ENV_VARS.md`](docs/ENV_VARS.md) — fill in your own API keys
-   and Firebase project.
-3. Read [`docs/DEPLOY.md`](docs/DEPLOY.md) when you're ready to put it online.
+# Getting Started
 
-## Known gaps (be upfront about these with judges)
+## Frontend
 
-- The AI provider calls (Gemini/Groq) and live Firebase were tested with
-  real keys locally, not from this build environment — verify once you drop
-  in your own `.env`.
-- Render's **free** plan has no persistent disk, so the local ChromaDB index
-  resets on every redeploy — see the note in `backend/render.yaml`.
-- Settings supports display name and password changes, but there's no
-  avatar upload yet.
+```bash
+npm install
+
+npm run dev
+```
+
+## Backend
+
+```bash
+cd backend
+
+pip install -r requirements.txt
+
+python main.py
+```
+
+For environment variables and deployment instructions, refer to:
+
+- docs/INSTALL.md
+- docs/ENV_VARS.md
+- docs/DEPLOY.md
+
+---
+
+# Demo Flow
+
+1. Sign in to Mosaic AI.
+2. Upload academic or professional documents.
+3. AI extracts structured information.
+4. Documents are automatically categorized.
+5. Related experiences are connected.
+6. A digital timeline is generated.
+7. Search documents using natural language.
+8. Chat with uploaded documents.
+9. Generate a resume or professional bio.
+
+---
+
+# Current Limitations
+
+- API keys must be configured before running locally.
+- Render free tier does not provide persistent storage for the vector database.
+- Avatar upload is not available yet.
+
+---
+
+# Future Improvements
+
+- Better multilingual document understanding
+- Improved OCR support
+- Mobile application
+- Smarter relationship inference
+- Enhanced analytics dashboard
+
+---
+
+## Project Goal
+
+The goal of Mosaic AI is simple:
+
+> **Upload your documents once and never waste time searching through folders again.**
+
+By combining AI-powered document understanding, semantic search, relationship mapping, and timeline generation, Mosaic AI creates an intelligent digital identity that grows with the user throughout their academic and professional journey.
