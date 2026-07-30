@@ -1,0 +1,52 @@
+services:
+  - type: web
+    name: mosaic-ai-backend
+    env: python
+    plan: free
+    region: singapore
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
+    # ChromaDB persists to disk (CHROMA_PERSIST_DIR) — without a Render disk
+    # this resets on every deploy/restart and semantic search loses all
+    # embeddings. Free plan does not support disks; upgrade the plan below
+    # if that matters for your demo, or re-embed items after each deploy.
+    disk:
+      name: chroma-data
+      mountPath: /opt/render/project/src/chroma_data
+      sizeGB: 1
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY_BACKUP
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.6-flash
+      - key: GEMINI_EMBEDDING_MODEL
+        value: gemini-embedding-001
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      # Firebase Admin needs the service-account JSON on disk — upload it
+      # under Render's "Secret Files" as /etc/secrets/firebase-service-account.json
+      # and point this at it. Never commit the real file to git.
+      - key: FIREBASE_ADMIN_CREDENTIALS_PATH
+        value: /etc/secrets/firebase-service-account.json
+      # Cloudinary holds every uploaded file (Firebase Storage is not used).
+      # Paste the dashboard's single API environment variable as CLOUDINARY_URL,
+      # or fill the three individual values instead.
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_UPLOAD_FOLDER
+        value: mosaic
+      - key: CHROMA_PERSIST_DIR
+        value: /opt/render/project/src/chroma_data
+      - key: CHROMA_COLLECTION_NAME
+        value: mosaic_items

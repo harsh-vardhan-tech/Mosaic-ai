@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+firebase-admin
+cloudinary
+chromadb
+google-genai
+pypdf
+python-docx
+httpx
+python-multipart
+python-dotenv
