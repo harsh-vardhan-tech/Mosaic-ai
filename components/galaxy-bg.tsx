@@ -334,6 +334,8 @@ export function GalaxyBg() {
 
     // ── RAF loop ───────────────────────────────────────────────────────────────
     function draw() {
+      if (!ctx) return; // <--- FIX: TS ko confirm karne ke liye ki ctx yahan null nahi hai
+
       raf = requestAnimationFrame(draw);
       frame++;
       ctx.clearRect(0, 0, W, H);
@@ -341,9 +343,9 @@ export function GalaxyBg() {
       const [h, s, l] = hsl;
       switch (theme) {
         case "azure":  drawAzure(ctx, W, H, frame, azureState, h, s, l);   break;
-        case "gold":   drawGold(ctx, W, H, frame, goldState);               break;
-        case "teal":   drawTeal(ctx, W, H, frame, tealState);               break;
-        case "coral":  drawCoral(ctx, W, H, frame, coralState);             break;
+        case "gold":   drawGold(ctx, W, H, frame, goldState);              break;
+        case "teal":   drawTeal(ctx, W, H, frame, tealState);              break;
+        case "coral":  drawCoral(ctx, W, H, frame, coralState);            break;
         case "violet": drawViolet(ctx, W, H, frame, violetState, h, s, l); break;
       }
     }
