@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
-  Upload, Sparkles, Search, MessageSquare, FileText, Compass,
+  Upload, Sparkles, Search, MessageSquare, FileText, Compass,Star,
   Clock, BarChart3, ArrowRight, BadgeCheck, FolderKanban, Trophy,
   Building2, Zap, Brain, Globe, Shield, GraduationCap,
   Download, Users, ChevronRight, Mic, Network, Target, TrendingUp,
