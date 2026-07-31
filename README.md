@@ -1,292 +1,156 @@
-Mosaic AI
-
-An AI-powered Digital Identity System that understands, organizes, and connects a student’s academic and professional journey.
-
-Overview
-
-Students collect certificates, resumes, internship letters, project reports, achievements, and other important documents over time. These files usually get scattered across folders, cloud storage, emails, and multiple devices, making it hard to find the right document or understand how different experiences are connected.
-
-Mosaic AI solves this by turning scattered documents into an intelligent digital identity. It extracts structured information, automatically categorizes documents, identifies relationships, builds a digital timeline, and enables natural language search over the user’s own data.
-
-Original files remain preserved while AI creates a searchable knowledge layer on top of them.
-
-Problem Statement
-
-Traditional storage systems can store files, but they cannot understand a person’s journey.
-
-Students and professionals often struggle to:
-
-- find important documents quickly,
-- organize achievements properly,
-- connect skills with projects and internships,
-- and present their journey in a clean, structured way.
-
-Solution
-
-Mosaic AI transforms scattered documents into an intelligent profile system.
-
-It uses AI to:
-
-- extract structured information from uploaded files,
-- automatically categorize documents,
-- identify relationships between experiences,
-- generate a digital timeline,
-- and support semantic search and RAG-based chat.
-
-Key Features
-
-AI Document Ingestion
-
-Upload:
-
-- certificates
-- resumes
-- internship letters
-- project reports
-- academic documents
-
-Automatic text extraction and metadata generation are powered by Gemini AI.
-
-Intelligent Categorization
-
-Documents are automatically organized into:
-
-- Projects
-- Skills
-- Certifications
-- Internships
-- Achievements
-- Academics
-
-Relationship Engine
-
-Mosaic AI discovers relationships between uploaded information.
-
-Example:
-
-Certification
-      ↓
-Skill
-      ↓
-Project
-      ↓
-Internship
-
-Digital Journey Timeline
-
-A chronological timeline shows the user’s growth and achievements.
-
-Example:
-
-2023 → Python Certification
-
-2024 → Web Development Project
-
-2025 → Software Internship
-
-2026 → AI Portfolio
-
-Semantic Search
-
-Search documents using natural language instead of manually browsing folders.
-
-Examples:
-
-- Show all my certificates
-- Show my AI projects
-- Show internship documents
-- Show my latest resume
-
-AI Chat (RAG)
-
-Chat with uploaded documents using Retrieval-Augmented Generation.
-
-AI Content Generation
-
-Generate:
-
-- Resume
-- Professional Bio
-- Portfolio Summary
-
-Analytics Dashboard
-
-View categorized information and overall profile summary.
-
-AI Workflow
-
-flowchart TD
-    A[User Upload] --> B[Document Extraction]
-    B --> C[Gemini AI]
-    C --> D[Structured Metadata]
-    D --> E[Automatic Categorization]
-    E --> F[Relationship Engine]
-    F --> G[Vector Embeddings]
-    G --> H[Semantic Search + RAG Chat]
-    H --> I[Timeline • Analytics • Resume Generation]
-
-System Architecture
-
-flowchart TD
-    U[👤 User] --> FE[🌐 Next.js Frontend]
-    FE --> AUTH[🔐 Firebase Authentication]
-    AUTH --> API[⚡ FastAPI Backend]
-
-    API --> CLD[☁️ Cloudinary]
-    API --> GEM[🤖 Gemini AI]
-    API --> FIRE[🗄️ Cloud Firestore]
-    API --> CHROMA[🧠 ChromaDB]
-
-    CLD --> EXTRACT[📄 Document Extraction]
-    GEM --> META[🏷️ Metadata Generation]
-    EXTRACT --> META
-
-    META --> CAT[📂 Categorization]
-    CAT --> REL[🔗 Relationship Engine]
-    REL --> TIME[📅 Digital Timeline]
-
-    META --> EMBED[🧠 Vector Embeddings]
-    EMBED --> CHROMA
-    CHROMA --> SEARCH[🔍 Semantic Search]
-    SEARCH --> CHAT[💬 RAG Chat]
-
-    FIRE --> RESUME[📄 Resume Generator]
-    FIRE --> BIO[👨‍💼 Professional Bio]
-    FIRE --> PORT[🌐 Portfolio Summary]
-    FIRE --> DASH[📊 Analytics Dashboard]
-
-Component Architecture
-
-graph LR
-    subgraph Frontend
-        A[Next.js]
-    end
-
-    subgraph Backend
-        B[FastAPI]
-    end
-
-    subgraph AI
-        C[Gemini AI]
-        D[Groq Fallback]
-    end
-
-    subgraph Storage
-        E[Cloudinary]
-        F[Firestore]
-        G[ChromaDB]
-    end
-
-    subgraph Features
-        H[Categorization]
-        I[Relationship Engine]
-        J[Timeline]
-        K[Semantic Search]
-        L[RAG Chat]
-        M[Resume Generator]
-        N[Analytics]
-    end
-
-    A --> B
-    B --> C
-    B --> D
-    B --> E
-    B --> F
-    B --> G
-
-    C --> H
-    H --> I
-    I --> J
-
-    G --> K
-    K --> L
-
-    F --> M
-    F --> N
-
-Deployment Architecture
-
-flowchart LR
-    User --> Vercel[▲ Vercel Frontend]
-    Vercel --> Render[⚡ Render Backend]
-
-    Render --> Firebase[(Firestore)]
-    Render --> Cloudinary[(Cloudinary)]
-    Render --> Gemini[(Gemini AI)]
-    Render --> Groq[(Groq)]
-    Render --> Chroma[(ChromaDB)]
-
-Technology Stack
-
-Layer| Technology
-Frontend| Next.js, React, Tailwind CSS
-Backend| FastAPI
-Authentication| Firebase Authentication
-Database| Cloud Firestore
-AI Models| Gemini AI, Groq (Fallback)
-Vector Database| ChromaDB
-File Storage| Cloudinary
-Deployment| Vercel, Render
-
-Project Structure
-
+# 🧩 Mosaic AI — Digital Identity System
+
+> **MemoryVerse AI '26 Submission** | *Transforming scattered documents into an intelligent, connected digital journey.*
+
+![Mosaic AI Banner](https://img.shields.io/badge/MemoryVerse%20AI%20'26-Submission-6C5CE7?style=for-the-badge&logo=mosaic&logoColor=white)
+[![Next.js](https://img.shields.io/badge/Frontend-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Gemini AI](https://img.shields.io/badge/AI-Google%20Gemini-8E44AD?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![ChromaDB](https://img.shields.io/badge/VectorDB-ChromaDB-FC6D26?style=for-the-badge&logo=database&logoColor=white)](https://www.trychroma.com/)
+
+---
+
+## 🎯 The Core Problem & Solution
+
+Students collect certificates, resumes, internship letters, and project reports across multiple cloud drives and folders. Traditional storage platforms save files, but they cannot **understand** a student's journey.
+
+> **The Goal:** *"Upload your documents once, and never waste time searching through folders again."*
+
+**Mosaic AI** converts unstructured, scattered documents into a **structured, connected, and searchable knowledge graph and digital identity timeline**.
+
+---
+
+## 🚀 Key Modules Solved (Wooble Challenge Brief)
+
+### 1. 📄 AI Data Ingestion
+* Ingests Certificates, Resumes, Project Reports, Internship Letters, and Academic documents.
+* Automated text extraction, OCR parsing, and structured metadata generation.
+
+### 2. 🏷️ Intelligent Categorization
+Automatically tags and buckets content into:
+`Projects` • `Skills` • `Certifications` • `Internships` • `Achievements` • `Academics`
+
+### 3. 🔗 Knowledge & Relationship Engine
+Identifies hidden relationships across data:
+```text
+[ Certification: Python ] ──► [ Skill: Data Science ] ──► [ Project: AI Model ] ──► [ Internship: ML Lead ]
+
+4. ⏳ Digital Journey Timeline
+Chronological growth history mapping:
+
+ 2023 ───► [ Certification ] Python Basics & Data Structures
+ 2024 ───► [ Project ]       Full-Stack Web Development App
+ 2025 ───► [ Internship ]    Software Engineering Intern at XYZ
+ 2026 ───► [ Identity ]      AI/ML Project Portfolio & Mosaic AI
+
+🔍 Module 5: Smart Retrieval System (RAG)
+Natural Language Querying: "Show my AI projects", "Show internship documents", "Show latest resume".
+RAG Chat: Interactive conversation directly with your documents without altering original file formats.
+🏗️ System Architecture & Workflow
+
+  ┌─────────────────────────────────────────────────────────┐
+  │                 User Upload (Files/Links)               │
+  │     (PDFs, Resumes, Certificates, Internship Letters)   │
+  └────────────────────────────┬────────────────────────────┘
+                               │
+                               ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │         Document Parsing & OCR Extraction Layer         │
+  └────────────────────────────┬────────────────────────────┘
+                               │
+                               ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │                  Google Gemini AI Engine                │
+  │      (NLP Metadata Extraction & Categorization)         │
+  └────────────────────────────┬────────────────────────────┘
+                               │
+            ┌──────────────────┴──────────────────┐
+            ▼                                     ▼
+┌───────────────────────────────┐     ┌───────────────────────────────┐
+│    Vector Embeddings (RAG)    │     │      Relationship Engine      │
+│  Store in ChromaDB Vector DB  │     │   Maps Skill ➔ Project ➔ Work │
+└───────────┬───────────────────┘     └───────────────┬───────────────┘
+            │                                         │
+            ▼                                         ▼
+┌───────────────────────────────┐     ┌───────────────────────────────┐
+│ Natural Language Search & Chat│     │  Digital Identity Dashboard,  │
+│     (Retrieval-Augmented)     │     │   Timeline & Resume Generator │
+└───────────────────────────────┘     └───────────────────────────────┘
+
+
+🛠️ Technology Stack
+
+ComponentTechnology
+Frontend UINext.js 14, React, Tailwind CSS
+Backend APIFastAPI (Python)
+AuthenticationFirebase Authentication
+DatabaseCloud Firestore
+AI ModelsGoogle Gemini AI (Fallback: Groq API)
+Vector DB / RAGChromaDB + Sentence Embeddings
+File PreservanceCloudinary
+DeploymentVercel (Frontend), Render (Backend)
+
+📂 Project Structure
 mosaic-ai/
+├── 📁 app/               # Next.js App Router (Dashboard, Timeline, Chat UI)
+├── 📁 backend/           # FastAPI backend server
+│   ├── main.py           # API endpoints
+│   ├── rag_engine.py     # ChromaDB & Vector Search implementation
+│   └── extractor.py      # Gemini AI document parser
+├── 📁 components/        # Reusable UI components (Timeline, Search Bar, Cards)
+├── 📁 docs/              # Detailed documentation
+│   ├── INSTALL.md        # Step-by-step setup guide
+│   ├── ENV_VARS.md       # Environment configuration reference
+│   └── DEPLOY.md         # Deployment steps for Vercel & Render
+├── 📁 lib/               # Utility functions and API clients
+└── README.md             # Project documentation
 
-├── app/
-├── backend/
-├── components/
-├── docs/
-├── public/
-├── lib/
-└── README.md
+⚡ Quick Start & Local Setup
+1. Prerequisites
+Node.js (v18+)
+Python (3.9+)
+2. Frontend Setup
 
-Getting Started
+# Clone the repository
+git clone [https://github.com/your-username/mosaic-ai.git](https://github.com/your-username/mosaic-ai.git)
+cd mosaic-ai
 
-Frontend
-
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 
-Backend
 
+3. Backend Setup
+
+# Navigate to backend directory
 cd backend
+
+# Create virtual environment (optional)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install requirements
 pip install -r requirements.txt
+
+# Run FastAPI server
 python main.py
 
-For environment variables and deployment instructions, refer to:
 
-- "docs/INSTALL.md"
-- "docs/ENV_VARS.md"
-- "docs/DEPLOY.md"
+📊 Wooble Evaluation Criteria Alignment
 
-Demo Flow
+Criteria WeightFeature Implementation in Mosaic AI
+AI Organization (40%)Fully automated Gemini metadata extraction and dynamic 6-tier classification.
+AI/ML Techniques (25%)RAG implementation using ChromaDB vector database and semantic embeddings.
+Innovation & UX (20%)Visual digital timeline, identity mapping, and zero-folder retrieval.
+Clarity & Architecture (15%)Modular full-stack code, clear workflow diagrams, and documented setup.
 
-1. Sign in to Mosaic AI.
-2. Upload academic or professional documents.
-3. AI extracts structured information.
-4. Documents are automatically categorized.
-5. Related experiences are connected.
-6. A digital timeline is generated.
-7. Search documents using natural language.
-8. Chat with uploaded documents.
-9. Generate a resume or professional bio.
 
-Current Limitations
+⚠️ Current Limitations & Roadmap
+[x] Document ingestion & dynamic relationship mapping
+[x] RAG-powered natural language chat
+[ ] Multilingual OCR support for physical handwritten certificates
+[ ] iOS & Android mobile companion application
+<p align="center">Made with ❤️ for <b>Wooble MemoryVerse AI '26</b></p>
 
-- API keys must be configured before running locally.
-- Render free tier does not provide persistent storage for the vector database.
-- Avatar upload is not available yet.
-
-Future Improvements
-
-- Better multilingual document understanding
-- Improved OCR support
-- Mobile application
-- Smarter relationship inference
-- Enhanced analytics dashboard
-
-Project Goal
-
-Upload your documents once and never waste time searching through folders again.
-
-By combining AI-powered document understanding, semantic search, relationship mapping, and timeline generation, Mosaic AI creates an intelligent digital identity that grows with the user throughout their academic and professional journey.
