@@ -4,11 +4,9 @@ An AI-powered Digital Identity System that understands, organizes, and connects 
 
 Overview
 
-Students collect certificates, resumes, internship letters, project reports, achievements, and other important documents over time.
-These files usually get scattered across folders, cloud storage, emails, and multiple devices, making it hard to find the right document or understand how different experiences are connected.
+Students collect certificates, resumes, internship letters, project reports, achievements, and other important documents over time. These files usually get scattered across folders, cloud storage, emails, and multiple devices, making it hard to find the right document or understand how different experiences are connected.
 
-Mosaic AI solves this by turning scattered documents into an intelligent digital identity.
-It extracts structured information, automatically categorizes documents, identifies relationships, builds a digital timeline, and enables natural language search over the user’s own data.
+Mosaic AI solves this by turning scattered documents into an intelligent digital identity. It extracts structured information, automatically categorizes documents, identifies relationships, builds a digital timeline, and enables natural language search over the user’s own data.
 
 Original files remain preserved while AI creates a searchable knowledge layer on top of them.
 
