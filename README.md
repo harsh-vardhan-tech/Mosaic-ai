@@ -326,6 +326,6 @@ By combining AI-powered document understanding, semantic search, relationship ma
 
 ---
 
-Made By harsh-vardhan.tech ❤️ for **MemoryVerse AI '26** · Wooble
+Made By Harsh Vardhan ❤️ for **MemoryVerse AI '26** · Wooble
 
 </div>
