@@ -27,8 +27,6 @@ export function LandingNav({ signedIn }: { signedIn: boolean }) {
   const navLinks = [
     { label: "Features", href: "#features" },
     { label: "How it works", href: "#how-it-works" },
-    { label: "Pricing", href: "#comparison" },
-    { label: "FAQ", href: "#faq" },
   ];
 
   return (
@@ -90,7 +88,7 @@ export function LandingNav({ signedIn }: { signedIn: boolean }) {
 const HERO_TILES = [
   { label: "Certifications", icon: BadgeCheck, text: "text-tile-amber", bg: "bg-tile-amber/12", ring: "ring-tile-amber/30", title: "AWS Cloud Practitioner", sub: "Amazon · 2025", floatClass: "tile-float-0", glowClass: "glow-card-gold", tag2c: "bg-tile-teal/10 text-tile-teal ring-tile-teal/30", tag2l: "indexed" },
   { label: "Projects", icon: FolderKanban, text: "text-tile-teal", bg: "bg-tile-teal/12", ring: "ring-tile-teal/30", title: "Campus Navigation App", sub: "React Native · Maps API", floatClass: "tile-float-1", glowClass: "glow-card-teal", tag2c: "bg-tile-violet/10 text-tile-violet ring-tile-violet/30", tag2l: "searchable" },
-  { label: "Achievements", icon: Trophy, text: "text-gold", bg: "bg-gold/12", ring: "ring-gold/30", title: "Hackathon Winner", sub: "Smart India Hackathon", floatClass: "tile-float-2", glowClass: "glow-card-gold", tag2c: "bg-gold/10 text-gold ring-gold/30", tag2l: "story ready" },
+  { label: "Achievements", icon: Trophy, text: "text-gold", bg: "bg-gold/12", ring: "ring-gold/30", title: "Hackathon Winner", sub: "National hackathon", floatClass: "tile-float-2", glowClass: "glow-card-gold", tag2c: "bg-gold/10 text-gold ring-gold/30", tag2l: "story ready" },
   { label: "Internships", icon: Building2, text: "text-tile-coral", bg: "bg-tile-coral/12", ring: "ring-tile-coral/30", title: "SDE Intern", sub: "Fintech startup · Summer", floatClass: "tile-float-3", glowClass: "glow-card-coral", tag2c: "bg-tile-coral/10 text-tile-coral ring-tile-coral/30", tag2l: "resume-ready" },
 ];
 
@@ -187,7 +185,7 @@ export function LandingHero({ signedIn }: { signedIn: boolean }) {
           </h1>
 
           <p className="fade-up fade-up-delay-2 max-w-lg text-pretty text-[1.05rem] leading-relaxed text-muted sm:text-lg">
-            Certificates, projects, internships, and awards scattered across a dozen folders — Mosaic AI ingests them all, extracts the story with Gemini, and turns it into a portfolio you can search, chat with, and generate a resume from in seconds.
+            Certificates, projects, internships, and awards scattered across a dozen folders — Mosaic AI brings them together, organizes the details, and helps you turn them into a portfolio, searchable workspace, and resume.
           </p>
 
           <div className="fade-up fade-up-delay-3 flex flex-wrap items-center gap-3">
@@ -340,7 +338,7 @@ export function LandingMarquee() {
 }
 
 const FEATURES = [
-  { icon: Upload, color: "text-tile-teal", bg: "bg-tile-teal/12", border: "border-tile-teal/20", glow: "glow-card-teal", title: "Drop anything, get structure", body: "PDFs, images, DOCX — Gemini AI reads each file and extracts title, organization, dates, skills, entities, and category automatically.", badges: ["OCR", "Auto-title", "Auto-tags"] },
+  { icon: Upload, color: "text-tile-teal", bg: "bg-tile-teal/12", border: "border-tile-teal/20", glow: "glow-card-teal", title: "Drop anything, get structure", body: "PDFs, images, and DOCX files are organized into title, organization, dates, skills, entities, and category automatically.", badges: ["OCR", "Auto-title", "Auto-tags"] },
   { icon: MessageSquare, color: "text-tile-coral", bg: "bg-tile-coral/12", border: "border-tile-coral/20", glow: "glow-card-coral", title: "Chat with your journey", body: "Ask \"what AI certifications do I have?\" and get grounded answers with the exact source documents cited inline.", badges: ["RAG", "Citations", "Multi-doc"] },
   { icon: Search, color: "text-tile-violet", bg: "bg-tile-violet/12", border: "border-tile-violet/20", glow: "glow-card-violet", title: "Semantic + hybrid search", body: "Find items by meaning, not just keywords — every document is embedded into a personal vector index, scoped only to you.", badges: ["Semantic", "Keyword", "Voice"] },
   { icon: FileText, color: "text-gold", bg: "bg-gold/12", border: "border-gold/20", glow: "glow-card-gold", title: "One-click resume & bio", body: "Generate a structured resume, professional bio, shareable portfolio, cover letter, or LinkedIn summary from everything uploaded.", badges: ["PDF export", "ATS check", "Templates"] },
@@ -395,7 +393,7 @@ export function LandingFeatures() {
 
 const STEPS = [
   { icon: Upload, color: "text-gold", bg: "bg-gold/12", border: "border-gold/25", glow: "glow-card-gold", num: "01", title: "Upload anything", body: "Drag in a certificate, project report, internship letter, or degree transcript. PDF, image, DOCX — all supported up to 15 MB.", connector: "from-gold/50", detail: "Batch upload, ZIP, Google Drive — all work." },
-  { icon: Brain, color: "text-tile-violet", bg: "bg-tile-violet/12", border: "border-tile-violet/25", glow: "glow-card-violet", num: "02", title: "Gemini AI extracts the story", body: "Gemini reads each file and pulls out skills, dates, organizations, entities, and importance — then categorizes and vector-indexes everything.", connector: "from-tile-violet/50", detail: "Takes under 5 seconds per document." },
+  { icon: Brain, color: "text-tile-violet", bg: "bg-tile-violet/12", border: "border-tile-violet/25", glow: "glow-card-violet", num: "02", title: "AI organizes the story", body: "AI reads each file and pulls out skills, dates, organizations, entities, and importance — then organizes everything for you.", connector: "from-tile-violet/50", detail: "Review and edit everything before you use it." },
   { icon: Zap, color: "text-tile-teal", bg: "bg-tile-teal/12", border: "border-tile-teal/25", glow: "glow-card-teal", num: "03", title: "Use it everywhere", body: "Search it, chat with it, see it on your timeline, generate resumes and bios, get career analysis — your entire journey, instantly accessible.", connector: null, detail: "Your Mosaic grows smarter with every upload." },
 ];
 
