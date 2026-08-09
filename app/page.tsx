@@ -1,25 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useAuth } from "@/lib/auth-context";
 import {
   LandingNav,
   LandingHero,
-  LandingMarquee,
   LandingFeatures,
   LandingHowItWorks,
-  LandingAllFeatures,
-  LandingComparison,
-  LandingFaq,
   LandingCta,
   LandingFooter,
 } from "@/components/landing-sections";
-import { GalaxyBg } from "@/components/galaxy-bg";
 
 export default function Home() {
   const { user, loading } = useAuth();
   const signedIn = !loading && !!user;
-  const pageRef = useRef<HTMLDivElement>(null);
 
   /* ----------------------------------------------------------
      Scroll-reveal observer — adds .revealed to .reveal elements
@@ -70,31 +64,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={pageRef} className="relative min-h-screen bg-surface">
-      {/* ---- Layer 0: Galaxy canvas background ---- */}
-      <GalaxyBg />
-
-      {/* ---- Layer 1: Animated orb blobs + aurora sweep + drifting grid ---- */}
-      <div className="live-bg" aria-hidden="true">
-        <div className="orb-3" />
-        <div className="orb-4" />
-        <div className="orb-5" />
-        <div className="bg-aurora-sweep" />
-        <div className="bg-grid-drift" />
-      </div>
-
-      {/* ---- Layer 2: Noise/grain texture ---- */}
-      <div className="noise-overlay" aria-hidden="true" />
-
+    <div className="relative min-h-screen bg-surface">
       <LandingNav signedIn={signedIn} />
       <main>
         <LandingHero signedIn={signedIn} />
-        <LandingMarquee />
         <LandingFeatures />
         <LandingHowItWorks />
-        <LandingAllFeatures />
-        <LandingComparison />
-        <LandingFaq />
         <LandingCta signedIn={signedIn} />
       </main>
       <LandingFooter />
